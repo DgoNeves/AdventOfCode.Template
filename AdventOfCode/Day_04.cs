@@ -43,7 +43,8 @@ namespace AdventOfCode
 
                 { (x) => x.Item1 == "hgt" && x.Item2.EndsWith("cm") ?   int.Parse(x.Item2.Replace("cm", "")) <= 193 &&
                                                                         int.Parse(x.Item2.Replace("cm", "")) >= 150 :
-                                             x.Item2.EndsWith("in") ?   int.Parse(x.Item2.Replace("in", "")) <= 76 && int.Parse(x.Item2.Replace("in", "")) >= 59
+                                             x.Item2.EndsWith("in") ?   int.Parse(x.Item2.Replace("in", "")) <= 76 &&
+                                                                        int.Parse(x.Item2.Replace("in", "")) >= 59
                                                                         : false },
                 { (x) => x.Item1 == "hcl" && x.Item2.Count() == 7 && x.Item2.StartsWith("#") && x.Item2.Skip(1).All(c => (c >= 48 && c <= 57) || (c >= 97 && c <= 102) ) },
                 { (x) => x.Item1 == "ecl" && x.Item2 == "amb" || x.Item2 == "blu" ||  x.Item2 == "brn" || x.Item2 == "gry"  || x.Item2 == "grn" || x.Item2 == "hzl" || x.Item2 == "oth" },
