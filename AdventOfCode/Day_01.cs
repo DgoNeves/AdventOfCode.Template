@@ -10,10 +10,12 @@ namespace AdventOfCode
     public class Day_01 : BaseDay
     {
         private readonly string _input;
+        private readonly string[] _lines;
 
         public Day_01()
         {
             _input = File.ReadAllText(InputFilePath);
+            _lines = File.ReadAllLines(InputFilePath);
         }
 
         public override string Solve_1() => $"Solution to {ClassPrefix} {CalculateIndex()}, part 1";
