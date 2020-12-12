@@ -39,17 +39,14 @@ namespace AdventOfCode
                 }
             }
 
-            var over = false;
-
-            while (!over)
+            while (true)
             {
                 nextSeatState = IterateSeats(currentSeatState);
 
                 var t = true;
-
-                for (int i = 0; i < nextSeatState.Count; i++)
+                foreach (var (key, value) in nextSeatState)
                 {
-                    if (nextSeatState.ElementAt(i).Value != currentSeatState[nextSeatState.ElementAt(i).Key])
+                    if (value != currentSeatState[key])
                     {
                         t = false;
                         break;
@@ -58,7 +55,6 @@ namespace AdventOfCode
 
                 if (t)
                 {
-                    over = true;
                     break;
                 }
 
@@ -80,33 +76,29 @@ namespace AdventOfCode
         {
             var nextSeatState = new Dictionary<Point, int>();
 
-            for (int i = 0; i < currentSeatState.Count; i++)
+            foreach (var (key, value) in currentSeatState)
             {
-                var seatState = currentSeatState.ElementAt(i);
-
-                if (currentSeatState.ElementAt(i).Value == -1)
+                if (value == -1)
                 {
-                    nextSeatState.Add(seatState.Key, seatState.Value);
+                    nextSeatState.Add(key, value);
                     continue;
                 }
 
-                var countAdjacentSeats = GetAdjacentOcupiedSeats(seatState.Key, currentSeatState);
+                var countAdjacentSeats = GetAdjacentOcupiedSeats(key, currentSeatState);
 
-                if (seatState.Value == 0 && countAdjacentSeats == 0)
+                if (value == 0 && countAdjacentSeats == 0)
                 {
-                    nextSeatState.Add(seatState.Key, 1);
+                    nextSeatState.Add(key, 1);
                 }
-                else if (seatState.Value == 1 && countAdjacentSeats > 4)
+                else if (value == 1 && countAdjacentSeats > 4)
                 {
-                    nextSeatState.Add(seatState.Key, 0);
+                    nextSeatState.Add(key, 0);
                 }
                 else
                 {
-                    nextSeatState.Add(seatState.Key, seatState.Value);
+                    nextSeatState.Add(key, value);
                 }
             }
-
-            // PrintState(nextSeatState);
 
             return nextSeatState;
         }
@@ -167,9 +159,9 @@ namespace AdventOfCode
 
                 var t = true;
 
-                for (int i = 0; i < nextSeatState.Count; i++)
+                foreach (var (key, value) in currentSeatState)
                 {
-                    if (nextSeatState.ElementAt(i).Value != currentSeatState[nextSeatState.ElementAt(i).Key])
+                    if (value != currentSeatState[key])
                     {
                         t = false;
                         break;
@@ -200,29 +192,27 @@ namespace AdventOfCode
         {
             var nextSeatState = new Dictionary<Point, int>();
 
-            for (int i = 0; i < currentSeatState.Count; i++)
+            foreach (var (key, value) in currentSeatState)
             {
-                var seatState = currentSeatState.ElementAt(i);
-
-                if (currentSeatState.ElementAt(i).Value == -1)
+                if (value == -1)
                 {
-                    nextSeatState.Add(seatState.Key, seatState.Value);
+                    nextSeatState.Add(key, value);
                     continue;
                 }
 
-                var countAdjacentSeats = GetAdjacentOcupiedSeats2(seatState.Key, currentSeatState);
+                var countAdjacentSeats = GetAdjacentOcupiedSeats2(key, currentSeatState);
 
-                if (seatState.Value == 0 && countAdjacentSeats == 0)
+                if (value == 0 && countAdjacentSeats == 0)
                 {
-                    nextSeatState.Add(seatState.Key, 1);
+                    nextSeatState.Add(key, 1);
                 }
-                else if (seatState.Value == 1 && countAdjacentSeats > 4)
+                else if (value == 1 && countAdjacentSeats > 4)
                 {
-                    nextSeatState.Add(seatState.Key, 0);
+                    nextSeatState.Add(key, 0);
                 }
                 else
                 {
-                    nextSeatState.Add(seatState.Key, seatState.Value);
+                    nextSeatState.Add(key, value);
                 }
             }
 
