@@ -63,9 +63,9 @@ namespace AdventOfCode
 
             var count = 0;
 
-            for (int i = 0; i < nextSeatState.Count; i++)
+            foreach (var (key, value) in nextSeatState)
             {
-                if (nextSeatState.ElementAt(i).Value == 1)
+                if (value == 1)
                     ++count;
             }
 
@@ -90,7 +90,7 @@ namespace AdventOfCode
                 {
                     nextSeatState.Add(key, 1);
                 }
-                else if (value == 1 && countAdjacentSeats > 4)
+                else if (value == 1 && countAdjacentSeats > 3)
                 {
                     nextSeatState.Add(key, 0);
                 }
@@ -116,8 +116,6 @@ namespace AdventOfCode
                 new Point(1,0),
                 new Point(1,1),
             };
-
-            var chekcPoint = new Point(key.X, key.Y);
 
             return lista.Count(p => isValidSeat(key, p) && currentSeatState[new Point(key.X + p.X, key.Y + p.Y)] == 1);
         }
@@ -179,9 +177,9 @@ namespace AdventOfCode
 
             var count = 0;
 
-            for (int i = 0; i < nextSeatState.Count; i++)
+            foreach (var (key, value) in nextSeatState)
             {
-                if (nextSeatState.ElementAt(i).Value == 1)
+                if (value == 1)
                     ++count;
             }
 
