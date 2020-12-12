@@ -20,9 +20,8 @@ namespace AdventOfCode
 
         public override string Solve_1()
         {
-            return "";
-
             var current = 25;
+
             IOrderedEnumerable<UInt64> ordered25;
             UInt64 n;
             do
